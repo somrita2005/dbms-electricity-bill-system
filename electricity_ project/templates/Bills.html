@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bills</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f4f6f9; }
+        .navbar { background-color: #003366; }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark px-4 py-3">
+        <span class="navbar-brand fw-bold fs-4">⚡ Electricity Bill Management</span>
+        <div>
+            <a href="/"           class="btn btn-outline-light btn-sm me-1">Home</a>
+            <a href="/consumers"  class="btn btn-outline-light btn-sm me-1">Consumers</a>
+            <a href="/bills"      class="btn btn-outline-light btn-sm me-1">Bills</a>
+            <a href="/payments"   class="btn btn-outline-light btn-sm me-1">Payments</a>
+            <a href="/complaints" class="btn btn-outline-light btn-sm">Complaints</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mt-5">
+        <h4 class="mb-4 text-secondary">All Bills</h4>
+
+        <div class="card shadow-sm border-0">
+            <div class="card-body">
+                <table class="table table-hover table-bordered align-middle">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Bill Number</th>
+                            <th>Consumer Name</th>
+                            <th>Phone</th>
+                            <th>Units</th>
+                            <th>Total Amount</th>
+                            <th>Due Date</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for b in bills %}
+                        <tr>
+                            <td>{{ b.bill_number }}</td>
+                            <td>{{ b.full_name }}</td>
+                            <td>{{ b.phone }}</td>
+                            <td>{{ b.units_consumed }}</td>
+                            <td>₹{{ b.total_amount }}</td>
+                            <td>{{ b.due_date }}</td>
+                            <td>
+                                {% if b.status == 'Paid' %}
+                                    <span class="badge bg-success">Paid</span>
+                                {% elif b.status == 'Unpaid' %}
+                                    <span class="badge bg-warning text-dark">Unpaid</span>
+                                {% else %}
+                                    <span class="badge bg-danger">Overdue</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

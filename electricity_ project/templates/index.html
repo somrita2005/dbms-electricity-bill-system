@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Electricity Bill Management</title>
+    <!-- Bootstrap for styling -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f4f6f9; }
+        .navbar { background-color: #003366; }
+        .card { border-radius: 12px; }
+        .card-icon { font-size: 2rem; }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark px-4 py-3">
+        <span class="navbar-brand fw-bold fs-4">⚡ Electricity Bill Management</span>
+        <div>
+            <a href="/"           class="btn btn-outline-light btn-sm me-1">Home</a>
+            <a href="/consumers"  class="btn btn-outline-light btn-sm me-1">Consumers</a>
+            <a href="/bills"      class="btn btn-outline-light btn-sm me-1">Bills</a>
+            <a href="/payments"   class="btn btn-outline-light btn-sm me-1">Payments</a>
+            <a href="/complaints" class="btn btn-outline-light btn-sm">Complaints</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mt-5">
+        <h4 class="mb-4 text-secondary">Dashboard Overview</h4>
+
+        <div class="row g-4">
+
+            <!-- Total Consumers -->
+            <div class="col-md-3">
+                <div class="card shadow-sm border-0 text-white" style="background-color: #0066cc;">
+                    <div class="card-body text-center py-4">
+                        <div class="card-icon">👤</div>
+                        <h2 class="fw-bold mt-2">{{ total_consumers }}</h2>
+                        <p class="mb-0">Active Consumers</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Unpaid Bills -->
+            <div class="col-md-3">
+                <div class="card shadow-sm border-0 text-white" style="background-color: #cc3300;">
+                    <div class="card-body text-center py-4">
+                        <div class="card-icon">📄</div>
+                        <h2 class="fw-bold mt-2">{{ unpaid_bills }}</h2>
+                        <p class="mb-0">Unpaid Bills</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Total Collected -->
+            <div class="col-md-3">
+                <div class="card shadow-sm border-0 text-white" style="background-color: #007744;">
+                    <div class="card-body text-center py-4">
+                        <div class="card-icon">💰</div>
+                        <h2 class="fw-bold mt-2">₹{{ total_collected }}</h2>
+                        <p class="mb-0">Total Collected</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Open Complaints -->
+            <div class="col-md-3">
+                <div class="card shadow-sm border-0 text-white" style="background-color: #cc7700;">
+                    <div class="card-body text-center py-4">
+                        <div class="card-icon">📋</div>
+                        <h2 class="fw-bold mt-2">{{ open_complaints }}</h2>
+                        <p class="mb-0">Open Complaints</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Quick Links -->
+        <div class="mt-5">
+            <h5 class="text-secondary mb-3">Quick Actions</h5>
+            <a href="/consumers"  class="btn btn-primary me-2">View Consumers</a>
+            <a href="/bills"      class="btn btn-danger me-2">View Bills</a>
+            <a href="/payments"   class="btn btn-success me-2">View Payments</a>
+            <a href="/complaints" class="btn btn-warning">View Complaints</a>
+        </div>
+    </div>
+
+</body>
+</html>

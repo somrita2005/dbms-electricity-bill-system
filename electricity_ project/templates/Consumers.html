@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Consumers</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f4f6f9; }
+        .navbar { background-color: #003366; }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark px-4 py-3">
+        <span class="navbar-brand fw-bold fs-4">⚡ Electricity Bill Management</span>
+        <div>
+            <a href="/"           class="btn btn-outline-light btn-sm me-1">Home</a>
+            <a href="/consumers"  class="btn btn-outline-light btn-sm me-1">Consumers</a>
+            <a href="/bills"      class="btn btn-outline-light btn-sm me-1">Bills</a>
+            <a href="/payments"   class="btn btn-outline-light btn-sm me-1">Payments</a>
+            <a href="/complaints" class="btn btn-outline-light btn-sm">Complaints</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mt-5">
+        <h4 class="mb-4 text-secondary">All Consumers</h4>
+
+        <div class="card shadow-sm border-0">
+            <div class="card-body">
+                <table class="table table-hover table-bordered align-middle">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Consumer No</th>
+                            <th>Full Name</th>
+                            <th>Phone</th>
+                            <th>City</th>
+                            <th>Connection Type</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for c in consumers %}
+                        <tr>
+                            <td>{{ c.consumer_no }}</td>
+                            <td>{{ c.full_name }}</td>
+                            <td>{{ c.phone }}</td>
+                            <td>{{ c.city }}</td>
+                            <td>{{ c.connection_type }}</td>
+                            <td>
+                                {% if c.status == 'Active' %}
+                                    <span class="badge bg-success">Active</span>
+                                {% else %}
+                                    <span class="badge bg-danger">Disconnected</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
